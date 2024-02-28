@@ -3,6 +3,7 @@ import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin"; // 这个插件不需要安装，是基于webpack的，需要引入webpack模块
 import svgToMiniDataURI from "mini-svg-data-uri";
 import "webpack-dev-server";
+import pkg from "../package.json";
 
 const Common: webpack.Configuration = {
   entry: path.join(__dirname, "../src/index.tsx"), // 入口文件
@@ -10,6 +11,13 @@ const Common: webpack.Configuration = {
     path: path.join(__dirname, "../dist"), // 打包后的文件存放的地方
     filename: "[name].js", // 打包后输出文件的文件名
     chunkFilename: "[name].[contenthash].chunk.js",
+    // libraryTarget: "umd",
+    publicPath: `/app-react/`,
+    // chunkLoadingGlobal: `webpackJsonp_${pkg.name}_${Date.now()}`,
+    library: `${pkg.name}-[name]`,
+    libraryTarget: "umd",
+    chunkLoadingGlobal: `webpackJsonp_${pkg.name}`,
+    globalObject: "window",
   },
   resolve: {
     extensions: [
@@ -109,8 +117,6 @@ const Common: webpack.Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../public/index.html"), // new一个这个插件的实例，并传入相关的参数
-      favicon: "./public/favicon.ico",
-      manifest: "./public/manifest.json",
     }),
   ],
 };

@@ -11,11 +11,20 @@ module.exports = merge(Common, {
   mode: "development",
   devtool: "cheap-module-source-map",
   devServer: {
-    static: {
-      directory: path.join(__dirname, "../public"),
-    },
-    port: "7100",
+    // static: {
+    //   directory: path.join(__dirname, "../public"),
+    // },
+    port: 7101,
     open: true,
+    historyApiFallback: true,
+    //启用热更新
+    liveReload: true,
+    // hot: true,
+    client: {
+      overlay: false,
+      logging: "none",
+    },
+    headers: { "Access-Control-Allow-Origin": "*" },
   },
   plugins: [
     new CaseSensitivePathsPlugin(),

@@ -4,10 +4,10 @@ import { Routes, HashRouter, Route, Link } from "react-router-dom";
 import { Divider } from "antd";
 import LibVersion from "./components/LibVersion";
 import HelloModal from "./components/HelloModal";
-import Home from "./pages/Home";
-import "./App.css";
+import Home from "./pages/home";
+import "./app.css";
 
-const About = lazy(() => import("./pages/About"));
+const About = lazy(() => import("./pages/about"));
 
 const RouteExample = () => {
   return (

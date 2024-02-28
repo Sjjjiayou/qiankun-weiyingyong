@@ -11,7 +11,7 @@ function render(props: { container?: HTMLDivElement }) {
   const rootContainer = container
     ? container.querySelector("#root")
     : document.querySelector("#root");
-
+  console.log("rootContainer", rootContainer);
   const root = createRoot(rootContainer!); // createRoot(container!) if you use TypeScript
   root.render(<App />);
 }
@@ -21,8 +21,9 @@ const App: React.FC = () => (
     <AppRouter />
   </ConfigProvider>
 );
-
+console.log(1);
 if (!(window as any).__POWERED_BY_QIANKUN__) {
+  console.log(2);
   render({});
 }
 
