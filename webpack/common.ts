@@ -11,10 +11,8 @@ const Common: webpack.Configuration = {
     path: path.join(__dirname, "../dist"), // 打包后的文件存放的地方
     filename: "[name].js", // 打包后输出文件的文件名
     chunkFilename: "[name].[contenthash].chunk.js",
-    // libraryTarget: "umd",
-    publicPath: `/app-react/`,
-    // chunkLoadingGlobal: `webpackJsonp_${pkg.name}_${Date.now()}`,
-    library: `${pkg.name}-[name]`,
+    publicPath: `/app-react`,
+    library: "app-react",
     libraryTarget: "umd",
     chunkLoadingGlobal: `webpackJsonp_${pkg.name}`,
     globalObject: "window",

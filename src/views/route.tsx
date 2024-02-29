@@ -1,6 +1,6 @@
 import { Spin } from "antd";
 import React, { Suspense, lazy } from "react";
-import { Routes, HashRouter, Route, Link } from "react-router-dom";
+import { Routes, BrowserRouter, Route, Link } from "react-router-dom";
 import { Divider } from "antd";
 import LibVersion from "./components/LibVersion";
 import HelloModal from "./components/HelloModal";
@@ -10,8 +10,9 @@ import "./app.css";
 const About = lazy(() => import("./pages/about"));
 
 const RouteExample = () => {
+  console.log("window", (window as any).__POWERED_BY_QIANKUN__);
   return (
-    <HashRouter
+    <BrowserRouter
       basename={(window as any).__POWERED_BY_QIANKUN__ ? "/app-react" : "/"}
     >
       <nav>
@@ -25,7 +26,7 @@ const RouteExample = () => {
           <Route path="/about" element={<About />} />
         </Routes>
       </Suspense>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
